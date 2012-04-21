@@ -37,9 +37,9 @@ sudo make install
 </code>
 1. To install dependencies, run:
     <code>npm install</code>
-1. Download the latest http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz. The default location $repo_root/GeoLiteCity.dat.gz
+1. Download and unzip the latest http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz. The default location $repo_root/GeoLiteCity.dat.gz
 Run this (from the root of the repo)
-<code>curl -o GeoLiteCity.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz</code>
+<code>curl -o GeoLiteCity.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz && gunzip GeoLiteCity.dat.gz</code>
 
 
 Usage
@@ -52,14 +52,14 @@ If you aren't using Forever
 
 Options:
 * -p or --port $port - specify an alternate port to listen to. The default is 9042
-* -d or --db $file - specify an alternate location for the MaxMindDb. The default is ./GeoLiteCity.dat.gz
+* -g or --geodb $file - specify an alternate location for the MaxMind DB file. The default is ./GeoLiteCity.dat
 
 
 Updating the database
 =================
 Maxmind updates their city database once a month. Grab the latest one and restart the service. Here's a cron that will do it once a month
 <code>
-TODO: 42 0 13 * * cd /path/to/this/repo/ && curl -o GeoLiteCity.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz && forever restart
+TODO: 42 0 13 * * cd /path/to/this/repo/ && curl -o GeoLiteCity.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz && rm GeoLiteCity.dat && gunzip GeoLiteCity.dat.gz && forever restart
 </code>
 
 

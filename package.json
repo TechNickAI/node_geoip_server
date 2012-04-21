@@ -1,7 +1,25 @@
 {
     "name": "node_geoip_server",
+    "homepage":"https://github.com/gorillamania/node_geoip_server",
+    "author":"Nick Sullivan <nick at sullivanflock . com>",
+    "description":"Node js http server that delivers geoip data",
     "version": "0.1.0",
     "private": true,
+    "repository": {
+      "type":"git",
+      "url":"git://github.com/gorillamania/node_geoip_server.git"
+    },
+    "bugs": {
+      "url":"http://github.com/gorillamania/node_geoip_server/issues"
+    },
+    "main":"app.js",
+    "engine":{"node": ">=0.6.0", "npm": "1"},
+    "licences": [
+      {
+        "type":"OpenBSD",
+        "url": "http://www.openbsd.org/policy.html"
+      }
+    ],
     "dependencies": {
       "geoip": "0.2.x",
       "optimist": "0.3.x"

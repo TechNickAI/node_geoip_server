@@ -27,14 +27,14 @@ TODO: Installation
 1. Install node.js - https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 1. Install npm - http://npmjs.org/ (run the install.sh as root)
 1. Install the C api from maxmind.
-<code>
+<pre>
 wget http://geolite.maxmind.com/download/geoip/api/c/GeoIP-1.4.7.tar.gz
 tar -xvzf GeoIP-1.4.7.tar.gz
 cd GeoIP-1.4.7
 ./configure --prefix=/usr
 make
 sudo make install
-</code>
+</pre>
 1. To install dependencies, run:
     <code>npm install</code>
 1. Download and unzip the latest http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz. The default location $repo_root/GeoLiteCity.dat.gz
@@ -67,3 +67,7 @@ Testing (TODO)
 =================
 When making changes to the code, run the unit tests with:
 <code>nodeunit tests.js</code>
+
+License
+=================
+BSD, see <a href="LICENSE">LICENSE</a>

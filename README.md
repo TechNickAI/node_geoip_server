@@ -15,7 +15,8 @@ Inputs:
 
 Dependencies
 =================
-* The excellent node-geoip library https://github.com/strange/node-geoip
+* Node/npm (duh)
+* The excellent node GeoIP library from kuno: https://github.com/kuno/GeoIP
 * MaxMind's geoip city database, available here:
 http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
 * Optional: Forever, a utility to keep the service running. https://github.com/nodejitsu/forever
@@ -24,9 +25,19 @@ http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
 TODO: Installation
 =================
 1. Install node.js - https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
-2. To install dependencies, run:
-    npm install
-3. Download the latest http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz. The default location is /usr/local/share/GeoIP/GeoLiteCity.dat.gz
+1. Install npm - http://npmjs.org/ (run the install.sh as root)
+1. Install the C api from maxmind.
+<code>
+wget http://geolite.maxmind.com/download/geoip/api/c/GeoIP-1.4.7.tar.gz
+tar -xvzf GeoIP-1.4.7.tar.gz
+cd GeoIP-1.4.7
+./configure --prefix=/usr
+make
+sudo make install
+</code>
+1. To install dependencies, run:
+    <code>npm install</code>
+1. Download the latest http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz. The default location $repo_root/GeoLiteCity.dat.gz
 Run this (from the root of the repo)
 <code>curl -o GeoLiteCity.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz</code>
 

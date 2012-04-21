@@ -70,4 +70,4 @@ When making changes to the code, run the unit tests with:
 
 License
 =================
-BSD, see <a href="LICENSE">LICENSE</a>
+BSD, see <a href="https://github.com/gorillamania/node_geoip_server/blob/master/LICENSE">LICENSE</a>

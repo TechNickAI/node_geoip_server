@@ -3,7 +3,21 @@ Overview
 Node js http server that delivers geoip data via a web service. Once running, the server will
 output a JSON strong with the users city, state, country of the user, like this:
 
-<code>{"country_code":"US","country_code3":"USA","country_name":"United States","region":"CA","city":"Pleasanton","latitude":37.66239929199219,"longitude":-121.89630126953125,"metro_code":807,"dma_code":807,"area_code":925,"continent_code":"NA"}</code>
+<pre>
+{
+ "country_code": "US",
+ "country_code3": "USA",
+ "country_name": "United States",
+ "region": "CA",
+ "city": "Pleasanton",
+ "latitude": 37.66239929199219,
+ "longitude": -121.89630126953125,
+ "metro_code": 807,
+ "dma_code": 807,
+ "area_code": 925,
+ "continent_code": "NA"
+}
+</pre>
 
 Inputs:
 * The ip address is determined by looking at the following, stopping once one is found

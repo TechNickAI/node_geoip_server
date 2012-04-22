@@ -55,7 +55,8 @@ function getIp(request) {
 
 function formatResult(request, lookup) {
   var get = url.parse(request.url, true).query,
-      json = JSON.stringify(lookup);
+      indent = parseInt(get.indent, 10) || 0,
+      json = JSON.stringify(lookup, null, indent);
   if (get.callback) {
     var callback = get.callback.replace(/[^A-Za-z.\_$]/, '_');
     return callback + '(' + json + ')';

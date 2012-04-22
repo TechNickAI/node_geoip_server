@@ -40,15 +40,24 @@ try {
   process.exit(1);
 }
 
+function getIp(request) {
+  if ( request.headers['x-forwarded-for']) {
+    // TODO: parse multi level x-forwarded-for
+    return request.headers['x-forwarded-for'];
+  } else {
+    return request.connection.remoteAddress; 
+  }
+}
 
 // Configure our HTTP server to respond with Hello World to all requests.
 var server = http.createServer(function (request, response) {
-  console.log(request.headers)
-  city.lookup('67.164.90.235', function(err, data) {
+  var ip = getIp(request);
+  city.lookup(ip, function(err, data) {
     if (err) {
-      response.writeHead(500, {"Content-Type": "text/javascript"});
-      response.end(err);
-    } else {
+      console.error(err);
+      response.writeHead(200, {"Content-Type": "text/javascript"});
+      response.end('{}');
+    } else if (data) {
       response.writeHead(200, {"Content-Type": "text/javascript"});
       response.end(JSON.stringify(data));
     }

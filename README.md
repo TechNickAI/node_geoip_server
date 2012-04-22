@@ -3,13 +3,13 @@ Overview
 TODO: Node js http server that delivers geoip data via a web service. Once running, the server will
 output a JSON strong with the users city, state, country of the user, like this:
 
-<code>{"city":"Pleasanton","country":"US"}</code>
+<code>{"country_code":"US","country_code3":"USA","country_name":"United States","region":"CA","city":"Pleasanton","latitude":37.66239929199219,"longitude":-121.89630126953125,"metro_code":807,"dma_code":807,"area_code":925,"continent_code":"NA"}</code>
 
 Inputs:
 * The ip address is determined by looking at the following, stopping once one is found
     * TODO: ?ip=xxx.xxx.xxx.xxx in the url
-    * TODO: <code>X-Forwarded-For</code> HTTP header (for proxies)
-    * TODO: IP address of the user via REMOTE_ADDR
+    * <code>X-Forwarded-For</code> HTTP header (for proxies)
+    * IP address of the user via REMOTE_ADDR
 * TODO <code>callback</code> may be passed through the url for jsonp.
 
 
@@ -22,7 +22,7 @@ http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
 * Optional: Forever, a utility to keep the service running. https://github.com/nodejitsu/forever
 
 
-TODO: Installation
+Installation
 =================
 1. Install node.js - https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 1. Install npm - http://npmjs.org/ (run the install.sh as root)
@@ -51,7 +51,7 @@ Updating the database
 =================
 Maxmind updates their city database once a month. Grab the latest one and restart the service. Here's a cron that will do it once a month
 <code>
-TODO: 42 0 13 * * cd /path/to/this/repo/ && curl -o GeoLiteCity.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz && rm GeoLiteCity.dat && gunzip GeoLiteCity.dat.gz && forever restart
+42 0 13 * * cd /path/to/this/repo/ && curl -o GeoLiteCity.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz && rm GeoLiteCity.dat && gunzip GeoLiteCity.dat.gz && forever restart
 </code>
 
 

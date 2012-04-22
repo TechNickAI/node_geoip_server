@@ -64,7 +64,7 @@ function formatResult(request, lookup) {
   }
 }
 
-// Configure our HTTP server to respond with Hello World to all requests.
+// Configure our HTTP server to respond
 var server = http.createServer(function (request, response) {
   var ip = getIp(request);
   city.lookup(ip, function(err, data) {

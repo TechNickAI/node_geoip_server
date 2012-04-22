@@ -1,16 +1,16 @@
 Overview
 =================
-TODO: Node js http server that delivers geoip data via a web service. Once running, the server will
+Node js http server that delivers geoip data via a web service. Once running, the server will
 output a JSON strong with the users city, state, country of the user, like this:
 
 <code>{"country_code":"US","country_code3":"USA","country_name":"United States","region":"CA","city":"Pleasanton","latitude":37.66239929199219,"longitude":-121.89630126953125,"metro_code":807,"dma_code":807,"area_code":925,"continent_code":"NA"}</code>
 
 Inputs:
 * The ip address is determined by looking at the following, stopping once one is found
-    * TODO: ?ip=xxx.xxx.xxx.xxx in the url
+    * ?ip=xxx.xxx.xxx.xxx in the url
     * <code>X-Forwarded-For</code> HTTP header (for proxies)
     * IP address of the user via REMOTE_ADDR
-* TODO <code>callback</code> may be passed through the url for jsonp.
+* <code>callback</code> may be passed through the url for jsonp.
 
 
 Dependencies
@@ -37,7 +37,7 @@ Run this (from the root of the repo)
 Usage
 =================
 If you are using Forever (recommended):
-TODO: <code>forever start -l forever.log -o out.log -e err.log app.js</code>
+<code>forever start -l forever.log -o out.log -e err.log app.js</code>
 
 If you aren't using Forever
 <code>node app.js</code>

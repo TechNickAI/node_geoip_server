@@ -53,6 +53,17 @@ function getIp(request) {
   }
 }
 
+function formatResult(request, lookup) {
+  var get = url.parse(request.url, true).query,
+      json = JSON.stringify(lookup);
+  if (get.callback) {
+    var callback = get.callback.replace(/[^A-Za-z.\_$]/, '_');
+    return callback + '(' + json + ')';
+  } else {
+    return json;
+  }
+}
+
 // Configure our HTTP server to respond with Hello World to all requests.
 var server = http.createServer(function (request, response) {
   var ip = getIp(request);
@@ -60,16 +71,15 @@ var server = http.createServer(function (request, response) {
     if (err) {
       console.error("lookup failed for ", ip, err);
       response.writeHead(200, {"Content-Type": "text/javascript"});
-      response.end('{}');
+      response.end(formatResult(request, {}));
     } else if (data) {
       console.log("lookup worked for ip", ip);
       response.writeHead(200, {"Content-Type": "text/javascript"});
-      response.end(JSON.stringify(data));
+      response.end(formatResult(request, data));
     }
   });
 });
 
-// Listen on port 8000, IP defaults to 127.0.0.1
 server.listen(argv.port);
 
 // Put a friendly message on the terminal

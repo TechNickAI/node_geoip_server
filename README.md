@@ -22,7 +22,7 @@ output a JSON strong with the users city, state, country, etc. like this:
 Inputs:
 * The ip address is determined by looking at the following, stopping once one is found
     * <code>?ip=xxx.xxx.xxx.xxx</code> in the url
-    * <code>X-Forwarded-For</code> HTTP header (for proxies)
+    * <code>X-Forwarded-For</code> HTTP header (for proxies). Supports multiple proxies.
     * IP address of the user via REMOTE_ADDR
 * <code>callback=functionName</code> wrap the result in this callback function for jsonp.
 * <code>indent=numSpaces</code> pretty print the output with this number of spaces. Ex. indent=2

@@ -46,8 +46,9 @@ function getIp(request) {
   if (get.ip) {
     return get.ip;
   } else if (request.headers['x-forwarded-for']) {
-    // TODO: parse multi level x-forwarded-for
-    return request.headers['x-forwarded-for'];
+    // http://en.wikipedia.org/wiki/X-Forwarded-For 
+    // Pull the first one out of the list 
+    return request.headers['x-forwarded-for'].split(',')[0];
   } else {
     return request.connection.remoteAddress; 
   }
@@ -58,6 +59,7 @@ function formatResult(request, lookup) {
       indent = parseInt(get.indent, 10) || 0,
       json = JSON.stringify(lookup, null, indent);
   if (get.callback) {
+    /// Simple XSS protection
     var callback = get.callback.replace(/[^A-Za-z.\_$]/, '_');
     return callback + '(' + json + ')';
   } else {

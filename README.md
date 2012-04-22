@@ -24,7 +24,8 @@ Inputs:
     * <code>?ip=xxx.xxx.xxx.xxx</code> in the url
     * <code>X-Forwarded-For</code> HTTP header (for proxies)
     * IP address of the user via REMOTE_ADDR
-* <code>callback</code> may be passed through the url for jsonp.
+* <code>callback=functionName</code> wrap the result in this callback function for jsonp.
+* <code>indent=numSpaces</code> pretty print the output with this number of spaces. Ex. indent=2
 
 
 Dependencies
@@ -49,8 +50,8 @@ Known to work with version 1.4.8
 The default location $repo_root/GeoLiteCity.dat , if you put it somewhere else, specify
 <code>--geodb</code> when starting the service.
 Run this (from the root of the repo)
-<code>curl -o GeoLiteCity.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz\
-   && gunzip GeoLiteCity.dat.gz</code>
+<pre>curl -o GeoLiteCity.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz\
+   && gunzip GeoLiteCity.dat.gz</pre>
 
 
 Usage
@@ -71,13 +72,13 @@ Options:
 Updating the database
 =================
 Maxmind updates their city database once a month. Grab the latest one and restart the service. Here's a cron that will do it once a month
-<code>
+<pre>
 42 0 13 * * cd /path/to/this/repo/ \
    && curl -o GeoLiteCity.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz\
    && rm GeoLiteCity.dat\
    && gunzip GeoLiteCity.dat.gz\
    && forever restartall
-</code>
+</pre>
 
 TODO
 =================

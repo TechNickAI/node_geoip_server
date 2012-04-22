@@ -1,8 +1,9 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2: */
 // Load the http module to create an http server.
-var http = require('http'),
+var geoip = require('geoip'),
     path = require('path'),
-    geoip = require('geoip');
+    http = require('http'),
+    url = require('url');
 
 // Command line options
 var args = require('optimist')
@@ -41,7 +42,10 @@ try {
 }
 
 function getIp(request) {
-  if ( request.headers['x-forwarded-for']) {
+  var get = url.parse(request.url, true).query;
+  if (get.ip) {
+    return get.ip;
+  } else if (request.headers['x-forwarded-for']) {
     // TODO: parse multi level x-forwarded-for
     return request.headers['x-forwarded-for'];
   } else {
@@ -54,10 +58,11 @@ var server = http.createServer(function (request, response) {
   var ip = getIp(request);
   city.lookup(ip, function(err, data) {
     if (err) {
-      console.error(err);
+      console.error("lookup failed for ", ip, err);
       response.writeHead(200, {"Content-Type": "text/javascript"});
       response.end('{}');
     } else if (data) {
+      console.log("lookup worked for ip", ip);
       response.writeHead(200, {"Content-Type": "text/javascript"});
       response.end(JSON.stringify(data));
     }

@@ -21,7 +21,7 @@
       }
     ],
     "dependencies": {
-      "geoip": "0.2.x",
+      "geoip": "0.4.x",
       "optimist": "0.3.x"
     }
 }

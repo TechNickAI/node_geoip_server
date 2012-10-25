@@ -4,7 +4,6 @@
     "author":"Nick Sullivan <nick at sullivanflock . com>",
     "description":"Node js http server that delivers geoip data",
     "version": "0.3.0",
-    "private": true,
     "repository": {
       "type":"git",
       "url":"git://github.com/gorillamania/node_geoip_server.git"

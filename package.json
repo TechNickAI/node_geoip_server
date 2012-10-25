@@ -1,16 +1,31 @@
 {
     "name": "node_geoip_server",
-    "homepage":"https://github.com/gorillamania/node_geoip_server",
-    "author":"Nick Sullivan <nick at sullivanflock . com>",
     "description":"Node js http server that delivers geoip data",
-    "version": "0.3.1",
+    "version": "0.3.2",
+    "keywords": ["node", "geoip", "ip lookup", "geo lookup"],
+    "author": { "name": "Nick Sullivan"},
+    "contributors": [
+        {
+            "name": "Nick Sullivan",
+            "email": "nick@sullivanflock.com",
+            "web": "http://creationeer.me"
+        }
+    ],
+    "maintainers": [
+        {
+            "name": "Nick Sullivan",
+            "email": "nick@sullivanflock.com",
+            "web": "http://creationeer.me"
+        }
+    ],
     "repository": {
-      "type":"git",
-      "url":"git://github.com/gorillamania/node_geoip_server.git"
+        "type":"git",
+        "url":"git://github.com/gorillamania/node_geoip_server.git"
     },
     "bugs": {
-      "url":"http://github.com/gorillamania/node_geoip_server/issues"
+        "url":"http://github.com/gorillamania/node_geoip_server/issues"
     },
+    "homepage":"https://github.com/gorillamania/node_geoip_server",
     "main":"app.js",
     "engine":{"node": ">=0.6.0", "npm": "1"},
     "licences": [
@@ -20,7 +35,7 @@
       }
     ],
     "dependencies": {
-      "geoip": "0.4.x",
-      "optimist": "0.3.x"
+        "geoip": "0.4.x",
+        "optimist": "0.3.x"
     }
 }
